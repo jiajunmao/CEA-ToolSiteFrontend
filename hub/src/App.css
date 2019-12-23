@@ -1,0 +1,48 @@
+.col-grey {
+  display: block;
+  margin: 0 auto;
+  background-color: grey;
+  color: white;
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+}
+
+.col-rice {
+  display: block;
+  margin: 0 auto;
+  background-color: antiquewhite;
+  color: grey;
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+}
+
+.row {
+  display: block;
+  margin: 0 auto;
+  border: green dotted;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.stage {
+  width: 90%;
+  margin: auto;
+  border: lightblue solid;
+}
+
+.plus {
+  height: 20vmin;
+  pointer-events: none;
+  display: block;
+  border: red solid;
+  margin: 0 auto;
+}
+
+.center-block {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  height: 20vmin;
+}
