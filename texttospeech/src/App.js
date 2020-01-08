@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   onSubmit = (input) => {
-    console.log(input)
     this.setState({submitted: true})
     
     var request = new XMLHttpRequest()
@@ -26,12 +25,19 @@ class App extends React.Component {
     request.setRequestHeader('Access-Control-Allow-Origin', '*')
     request.send()
 
+    var count = 0;
+
     request.onreadystatechange = (e) => {
-      console.log(request.responseText)
 
-      var data = JSON.parse(request.responseText)
+      if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+        console.log(request.responseText)
+        console.log(count)
 
-      this.setState({filename: data.filename})
+        var data = JSON.parse(request.responseText)
+        count++
+
+        this.setState({filename: data.filename})
+      }
     }
   }
 
