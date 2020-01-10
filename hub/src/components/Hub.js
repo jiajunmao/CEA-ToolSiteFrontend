@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row, Container } from 'react-bootstrap';
-import plusSign from "../plus512.png"
+import './Hub.css'
+import plusSign from '../plus512.png'
 
 class Hub extends Component {
     
@@ -9,15 +10,15 @@ class Hub extends Component {
         return (
             <Container className="stage">
                 <Row>
-                    <img sm={1} className="center-block" src={plusSign}/>
-                    <img sm={1} className="center-block" src={plusSign}/>
-                    <img sm={1} className="center-block" src={plusSign}/>
+                    <Col sm={4} className="center-block"><img height='80vmin' src={plusSign}/></Col>
+                    <Col sm={4} className="center-block"><img height='80vmin' src={plusSign}/></Col>
+                    <Col sm={4} className="center-block"><img height='80vmin' src={plusSign}/></Col>
                 </Row>
 
                 <Row>
-                    <img sm={1} className="center-block" src={plusSign}/>
-                    <img sm={1} className="center-block" src={plusSign}/>
-                    <img sm={1} className="center-block" src={plusSign}/>
+                    <Col sm={4} className="center-block"><img height='80vmin' src={plusSign}/></Col>
+                    <Col sm={4} className="center-block"><img height='80vmin' src={plusSign}/></Col>
+                    <Col sm={4} className="center-block"><img height='80vmin' src={plusSign}/></Col>
                 </Row>
             </Container>
         )

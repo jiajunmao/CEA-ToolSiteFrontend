@@ -21,21 +21,23 @@ class App extends React.Component {
     this.setState({submitted: true})
     
     var request = new XMLHttpRequest()
-    request.open('GET', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request?email=test@test.com&text=' + input, true)
+    request.open('POST', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request', true)
     request.setRequestHeader('Access-Control-Allow-Origin', '*')
-    request.send()
 
-    var count = 0;
+    var requestBody = '{'
+      + '"email" : "text@test.com",'
+      + '"requestText" : "' + input + '",'
+      + '"speakingSpeed" : 1,'
+      + '"pitch" : 0'
+      + '}'
+
+    console.log(requestBody)
+    request.send(requestBody)
 
     request.onreadystatechange = (e) => {
 
       if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-        console.log(request.responseText)
-        console.log(count)
-
         var data = JSON.parse(request.responseText)
-        count++
-
         this.setState({filename: data.filename})
       }
     }
@@ -45,13 +47,17 @@ class App extends React.Component {
     this.setState({downloadCompleted: true})
   }
 
+  downloadInitiated = () => {
+    this.setState({submitted: false, downloadCompleted: false, filename: ""})
+  }
+
   render() {
     return (
       <div className="App">
         <Header/>
         <TextInput onSubmit={this.onSubmit}/>
         {this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}
-        {this.state.downloadCompleted ? <DownloadButton filename={this.state.filename}/> : null}
+        {this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}
       </div>
     );
   }
