@@ -22,7 +22,9 @@ class App extends React.Component {
     
     var request = new XMLHttpRequest()
     request.open('POST', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request', true)
+    //request.open('POST', 'http://localhost:8081/tts/request', true)
     request.setRequestHeader('Access-Control-Allow-Origin', '*')
+    request.setRequestHeader('Content-Type', 'application/json')
 
     var requestBody = '{'
       + '"email" : "text@test.com",'
