@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import {Container, Row, Col} from 'react-bootstrap'
 
 import Header from './component/layout/Header'
 import TextInput from './component/pages/TextInput'
@@ -17,7 +18,7 @@ class App extends React.Component {
     super(props);
   }
 
-  onSubmit = (input) => {
+  onSubmit = (input, speed, pitch) => {
     this.setState({submitted: true})
     
     var request = new XMLHttpRequest()
@@ -29,8 +30,8 @@ class App extends React.Component {
     var requestBody = '{'
       + '"email" : "text@test.com",'
       + '"requestText" : "' + input + '",'
-      + '"speakingSpeed" : 1,'
-      + '"pitch" : 0'
+      + '"speakingSpeed" : ' + speed + ','
+      + '"pitch" : ' + pitch
       + '}'
 
     console.log(requestBody)
@@ -38,7 +39,7 @@ class App extends React.Component {
 
     request.onreadystatechange = (e) => {
 
-      if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+      if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
         var data = JSON.parse(request.responseText)
         this.setState({filename: data.filename})
       }
@@ -57,9 +58,17 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header/>
+        <br></br>
+        <br></br>
+        <br></br>
         <TextInput onSubmit={this.onSubmit}/>
-        {this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}
-        {this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}
+
+        <Container>
+          
+          <Row>{this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}</Row>
+          
+          <Row>{this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}</Row>
+        </Container>
       </div>
     );
   }

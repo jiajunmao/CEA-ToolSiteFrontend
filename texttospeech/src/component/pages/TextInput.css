@@ -1,24 +1,28 @@
 .inputTextArea {
     margin: auto;
-    margin-top: 30px;
-    display: block;
+    margin-top: 50px;
+    margin-bottom: 0px;
     height: 300px;
     width: 90%;
     border: 1px solid grey;
     padding: 10px;
 }
 
-.btn {
-    display: flex;
-    border: none;
-    background: #666;
-    color: #fff;
-    padding: 7px 20px;
-    margin: auto;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-.btn:hover {
-    background: rgb(66, 189, 62);
+
+.form {
+    margin-bottom: 70px;
+    margin-top: 5px;
+}
+
+.sliderTitle {
+    border: 1px solid grey;
+    align-content: center;
+}
+
+.sliderCol {
+    white-space: nowrap;
+}
+
+.black-border {
+    border: black dotted;
 }

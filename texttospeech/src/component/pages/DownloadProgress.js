@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Line, Circle } from 'rc-progress'
+import { Line } from 'rc-progress'
 import './DownloadProgress.css'
 
 class DownloadProgress extends Component {
