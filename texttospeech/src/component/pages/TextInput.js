@@ -13,9 +13,6 @@ class TextInput extends Component {
         pitch: 0.0
     };
 
-    constructor(props) {
-        super(props)
-    }
 
     onChange = (e) => {
         this.setState({input: e.target.value});
@@ -57,22 +54,10 @@ class TextInput extends Component {
 
                     <Col md={6}>
                         <div className="d-flex">
+
+                            <RemoveCircleIcon/>
+
                             <Slider
-                                defaultValue={1}
-                                value={this.state.speed}
-                                onChange={this.handleSpeedSlider}
-                                step={0.25}
-                                valueLabelDisplay="auto"
-                                min={0.25}
-                                max={4.0}
-                                marks/>
-
-                        </div>
-                    </Col>
-
-                    <Col md={6}>
-                        <div style={{"display" : "flex"}}>
-                        <Slider
                                 defaultValue={0}
                                 value={this.state.pitch}
                                 onChange={this.handlePitchSlider}
@@ -87,6 +72,30 @@ class TextInput extends Component {
                 
                 <br></br>
                 <br></br>
+
+                            <AddCircleIcon/>
+                        </div>
+                    </Col>
+
+                    <Col md={6}>
+                        <div style={{"display" : "flex"}}>
+
+                            <RemoveCircleIcon/>
+
+                            <Slider
+                                defaultValue={1}
+                                value={this.state.speed}
+                                onChange={this.handleSpeedSlider}
+                                step={0.25}
+                                valueLabelDisplay="auto"
+                                min={0.25}
+                                max={4.0}
+                                marks/>
+
+                            <AddCircleIcon/>
+                        </div>
+                    </Col>
+                </Row>
 
                 <Row className="text-center">
                     <Col>

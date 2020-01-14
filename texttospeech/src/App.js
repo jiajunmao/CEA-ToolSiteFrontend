@@ -1,21 +1,20 @@
 import React from 'react';
 import './App.css';
-import {Container, Row, Col} from 'react-bootstrap'
+import {Container, Row} from 'react-bootstrap'
 
 import Header from './component/layout/Header'
 import TextInput from './component/pages/TextInput'
 import Progress from './component/pages/DownloadProgress'
 import DownloadButton from './component/pages/DownloadButton'
 
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+
+
 class App extends React.Component {
   state = {
     submitted: false,
     filename: '',
     downloadCompleted: false
-  }
-
-  constructor(props) {
-    super(props);
   }
 
   onSubmit = (input, speed, pitch) => {
@@ -46,6 +45,16 @@ class App extends React.Component {
     }
   }
 
+  HomeScreen = () => {
+    return (
+        <Container>
+          <Row><TextInput onSubmit={this.onSubmit}/></Row>
+          <Row>{this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}</Row>
+          <Row>{this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}</Row>
+        </Container>
+    );
+  }
+
   downloadComplete = () => {
     this.setState({downloadCompleted: true})
   }
@@ -58,17 +67,15 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <TextInput onSubmit={this.onSubmit}/>
+        <br/>
+        <br/>
+        <br/>
 
-        <Container>
-          
-          <Row>{this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}</Row>
-          
-          <Row>{this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}</Row>
-        </Container>
+        <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
+          <Switch>
+            <Route path="/" component={this.HomeScreen}/>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
