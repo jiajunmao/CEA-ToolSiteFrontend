@@ -13,6 +13,7 @@ class TextInput extends Component {
         pitch: 0.0
     };
 
+
     onChange = (e) => {
         this.setState({input: e.target.value});
     };
@@ -65,6 +66,12 @@ class TextInput extends Component {
                                 min={-20}
                                 max={20}
                                 marks/>
+                        </div>
+                    </Col>
+                </Row>
+                
+                <br></br>
+                <br></br>
 
                             <AddCircleIcon/>
                         </div>
