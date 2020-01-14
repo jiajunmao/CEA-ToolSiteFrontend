@@ -58,21 +58,6 @@ class TextInput extends Component {
                     <Col md={6}>
                         <div className="d-flex">
                             <Slider
-                                defaultValue={0}
-                                value={this.state.pitch}
-                                onChange={this.handlePitchSlider}
-                                step={2}
-                                valueLabelDisplay="auto"
-                                min={-20}
-                                max={20}
-                                marks/>
-
-                        </div>
-                    </Col>
-
-                    <Col md={6}>
-                        <div style={{"display" : "flex"}}>
-                            <Slider
                                 defaultValue={1}
                                 value={this.state.speed}
                                 onChange={this.handleSpeedSlider}
@@ -80,6 +65,21 @@ class TextInput extends Component {
                                 valueLabelDisplay="auto"
                                 min={0.25}
                                 max={4.0}
+                                marks/>
+
+                        </div>
+                    </Col>
+
+                    <Col md={6}>
+                        <div style={{"display" : "flex"}}>
+                        <Slider
+                                defaultValue={0}
+                                value={this.state.pitch}
+                                onChange={this.handlePitchSlider}
+                                step={2}
+                                valueLabelDisplay="auto"
+                                min={-20}
+                                max={20}
                                 marks/>
                         </div>
                     </Col>
