@@ -51,7 +51,6 @@ class TextInput extends Component {
                 </Row>
 
                 <Row>
-
                     <Col md={6}>
                         <div className="d-flex">
 
@@ -68,19 +67,10 @@ class TextInput extends Component {
                                 marks/>
                         </div>
                     </Col>
-                </Row>
-                
-                <br></br>
-                <br></br>
 
                 
-                <Row>
-
                     <Col md={6}>
                         <div style={{"display" : "flex"}}>
-
-                            <RemoveCircleIcon/>
-
                             <Slider
                                 defaultValue={1}
                                 value={this.state.speed}
@@ -90,8 +80,6 @@ class TextInput extends Component {
                                 min={0.25}
                                 max={4.0}
                                 marks/>
-
-                            <AddCircleIcon/>
                         </div>
                     </Col>
                 </Row>
