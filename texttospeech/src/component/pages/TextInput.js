@@ -1,36 +1,36 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Slider from '@material-ui/core/Slider'
 import Button from '@material-ui/core/Button'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
-import {Container, Row, Col} from 'react-bootstrap'
+import {Col, Container, Row} from 'react-bootstrap'
 import './TextInput.css'
 
 class TextInput extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         input: '',
         speed: 1.0,
         pitch: 0.0
+    };
+
+    constructor(props) {
+        super(props)
     }
 
     onChange = (e) => {
-        this.setState({input: e.target.value})
-    }
+        this.setState({input: e.target.value});
+    };
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.onSubmit(this.state.input, this.state.speed, this.state.pitch)
-        this.setState({input: '', speech: 1.0, pitch: 0.0})
-    }
+        this.props.onSubmit(this.state.input, this.state.speed, this.state.pitch);
+        this.setState({input: '', speech: 1.0, pitch: 0.0});
+    };
 
     handleSpeedSlider = (event, value) => {
         this.setState({speed: value})
-    }
-    
+    };
+
     handlePitchSlider = (event, value) => {
         this.setState({pitch: value})
     }
@@ -38,38 +38,26 @@ class TextInput extends Component {
     render() {
         return (
             <Container>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css" />
-                    <Row className="form">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
+                <link rel="stylesheet"
+                      href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css"/>
+                <Row className="form">
                     <textarea className="inputTextArea"
-                        value={this.state.input}
-                        onChange={this.onChange}
-                        placeholder="Your text..."/>
-                    </Row>
-                    
-                    <Row>
-                        <Col className="text-center">Speed</Col>
-                        <Col className="text-center">Pitch</Col>
-                    </Row>
+                              value={this.state.input}
+                              onChange={this.onChange}
+                              placeholder="Your text..."/>
+                </Row>
 
-                    <Row className="black-border">
-                        <Col className="sliderCol" md={5}>
-                            <RemoveCircleIcon/>
+                <Row>
+                    <Col className="text-center">Speed</Col>
+                    <Col className="text-center">Pitch</Col>
+                </Row>
 
-                            <Slider
-                                defaultValue={1}
-                                value={this.state.speed}
-                                onChange={this.handleSpeedSlider}
-                                step={0.25}
-                                valueLabelDisplay="auto"
-                                min={0.25}
-                                max={4.0}
-                                marks/>
+                <Row>
 
-                            <AddCircleIcon />
-                        </Col>
+                    <Col md={6}>
+                        <div className="d-flex">
 
-                        <Col className="sliderCol" md={5}>
                             <RemoveCircleIcon/>
 
                             <Slider
@@ -82,15 +70,35 @@ class TextInput extends Component {
                                 max={20}
                                 marks/>
 
-                            <AddCircleIcon />
-                        </Col>
-                    </Row>
+                            <AddCircleIcon/>
+                        </div>
+                    </Col>
 
-                    <Row className="text-center">
-                        <Col>
-                            <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
-                        </Col>
-                    </Row>
+                    <Col md={6}>
+                        <div style={{"display" : "flex"}}>
+
+                            <RemoveCircleIcon/>
+
+                            <Slider
+                                defaultValue={1}
+                                value={this.state.speed}
+                                onChange={this.handleSpeedSlider}
+                                step={0.25}
+                                valueLabelDisplay="auto"
+                                min={0.25}
+                                max={4.0}
+                                marks/>
+
+                            <AddCircleIcon/>
+                        </div>
+                    </Col>
+                </Row>
+
+                <Row className="text-center">
+                    <Col>
+                        <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
+                    </Col>
+                </Row>
             </Container>
         )
     }
