@@ -73,9 +73,8 @@ class TextInput extends Component {
                 <br></br>
                 <br></br>
 
-                            <AddCircleIcon/>
-                        </div>
-                    </Col>
+                
+                <Row>
 
                     <Col md={6}>
                         <div style={{"display" : "flex"}}>
