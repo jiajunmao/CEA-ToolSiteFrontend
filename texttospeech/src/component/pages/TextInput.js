@@ -13,10 +13,6 @@ class TextInput extends Component {
         pitch: 0.0
     };
 
-    constructor(props) {
-        super(props)
-    }
-
     onChange = (e) => {
         this.setState({input: e.target.value});
     };
