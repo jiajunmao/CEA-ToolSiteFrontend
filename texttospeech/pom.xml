@@ -126,6 +126,25 @@
         </profile>
 
         <profile>
+            <id>dev</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+
+                        <configuration>
+                            <environmentVariables>
+                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/ttsTest</PUBLIC_URL>
+                                <REACT_APP_ROUTER_BASE>/ttsTest</REACT_APP_ROUTER_BASE>
+                            </environmentVariables>
+                        </configuration>r
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
             <id>prod</id>
             <build>
                 <plugins>
