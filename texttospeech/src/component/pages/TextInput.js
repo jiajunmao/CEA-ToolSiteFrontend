@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Slider from '@material-ui/core/Slider'
 import Button from '@material-ui/core/Button'
-import AddCircleIcon from '@material-ui/icons/AddCircle'
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 import {Col, Container, Row} from 'react-bootstrap'
 import './TextInput.css'
