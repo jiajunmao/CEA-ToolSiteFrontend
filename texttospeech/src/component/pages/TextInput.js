@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Slider from '@material-ui/core/Slider'
 import Button from '@material-ui/core/Button'
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 import {Col, Container, Row} from 'react-bootstrap'
 import './TextInput.css'
 
@@ -52,9 +51,6 @@ class TextInput extends Component {
                 <Row>
                     <Col md={6}>
                         <div className="d-flex">
-
-                            <RemoveCircleIcon/>
-
                             <Slider
                                 defaultValue={0}
                                 value={this.state.pitch}
