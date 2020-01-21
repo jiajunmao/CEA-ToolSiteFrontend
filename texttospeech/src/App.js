@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
+<<<<<<< HEAD
 import {Col, Container, Row} from 'react-bootstrap'
+=======
+import {Container, Row} from 'react-bootstrap'
+>>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
 
 import Header from './component/layout/Header'
 import TextInput from './component/pages/TextInput'
@@ -9,12 +13,16 @@ import Progress from './component/pages/DownloadProgress'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Button from "@material-ui/core/Button";
 
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+
+
 class App extends React.Component {
   state = {
     submitted: false,
     filename: '',
     downloadReady: false,
 
+<<<<<<< HEAD
     input: "",
     speed: 1.0,
     pitch: 0.0
@@ -31,6 +39,16 @@ class App extends React.Component {
     request.open('POST', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request', true);
     request.setRequestHeader('Access-Control-Allow-Origin', '*');
     request.setRequestHeader('Content-Type', 'application/json');
+=======
+  onSubmit = (input, speed, pitch) => {
+    this.setState({submitted: true})
+    
+    var request = new XMLHttpRequest()
+    request.open('POST', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request', true)
+    //request.open('POST', 'http://localhost:8081/tts/request', true)
+    request.setRequestHeader('Access-Control-Allow-Origin', '*')
+    request.setRequestHeader('Content-Type', 'application/json')
+>>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
 
     var requestBody = '{'
       + '"email" : "text@test.com",'
@@ -50,10 +68,25 @@ class App extends React.Component {
     }
   }
 
+<<<<<<< HEAD
   onDownload = () => {
       var fileUrl = "http://thinkpad.kentailab.org:8082/SpringText/download/" + this.state.filename
       window.location.href = fileUrl
       this.setState({submitted: false, progressCompleted: false, filename: "", downloadReady: false})
+=======
+  HomeScreen = () => {
+    return (
+        <Container>
+          <Row><TextInput onSubmit={this.onSubmit}/></Row>
+          <Row>{this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}</Row>
+          <Row>{this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}</Row>
+        </Container>
+    );
+  }
+
+  downloadComplete = () => {
+    this.setState({downloadCompleted: true})
+>>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
   }
 
   HomeScreen = () => {

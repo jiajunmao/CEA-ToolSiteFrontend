@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="b87de389-945e-4056-aef2-fe4b5bf636fd" name="Thinkpad-JS" url="http://thinkpad.kentailab.org">
-        <fileTransfer host="thinkpad.kentailab.org" port="2223" rootFolder="/home/aaronmao/CEA-ToolSiteFrontend" accessType="SFTP">
+        <fileTransfer host="thinkpad.kentailab.org" port="2223" rootFolder="/home/aaronmao/WebStorm/CEA-ToolSiteFrontend" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
