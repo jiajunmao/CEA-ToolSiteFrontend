@@ -1,38 +1,20 @@
 import React from 'react'
-
-
 import {Slider, TextField} from "@material-ui/core";
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 import {Col, Container, Row} from 'react-bootstrap'
 import './TextInput.css'
 
 class TextInput extends React.Component {
-    state = {
-        input: "",
-        speed: 1.0,
-        pitch: 0.0
-    };
-
-    onChange = () => {
-        this.props.onChange(this.state.input, this.state.speed, this.state.pitch);
-    }
 
     handleTextArea = (e) => {
-        this.setState({input: e.target.value}, () => {
-            this.onChange();
-        });
+        this.props.updateInput(e.target.value);
     };
 
     handleSpeedSlider = (event, value) => {
-        this.setState({speed: value}, () => {
-            this.onChange();
-        })
+        this.props.updateSpeed(value);
     };
 
     handlePitchSlider = (event, value) => {
-        this.setState({pitch: value}, () => {
-            this.onChange();
-        });
+        this.props.updatePitch(value);
     }
 
 
@@ -55,44 +37,42 @@ class TextInput extends React.Component {
                         autoFocus={true}
                         fullWidth={true}
                         variant="outlined"
+                        value={this.props.parentState.input}
                     />
                 </Row>
 
                 <Row>
-                    <Col className="text-center">Speed</Col>
-                    <Col className="text-center">Pitch</Col>
-                </Row>
-
-                <Row>
-
                     <Col md={6}>
                         <div className="d-flex">
                             <Slider
-                                defaultValue={0}
-                                value={this.state.pitch}
-                                onChange={this.handlePitchSlider}
-                                step={2}
-                                valueLabelDisplay="auto"
-                                min={-20}
-                                max={20}
+                                defaultValue={1}
+                                value={this.props.parentState.speed}
+                                onChange={this.handleSpeedSlider}
+                                step={0.25}
+                                valueLabelDisplay="on"
+                                min={0.25}
+                                max={4.0}
                                 marks/>
+                        </div>
+                        <div className="sliderTitle">
+                            Speed
                         </div>
                     </Col>
 
                     <Col md={6}>
                         <div style={{"display": "flex"}}>
-
-                            <RemoveCircleIcon/>
-
                             <Slider
-                                defaultValue={1}
-                                value={this.state.speed}
-                                onChange={this.handleSpeedSlider}
-                                step={0.25}
-                                valueLabelDisplay="auto"
-                                min={0.25}
-                                max={4.0}
+                                defaultValue={0}
+                                value={this.props.parentState.pitch}
+                                onChange={this.handlePitchSlider}
+                                step={2}
+                                valueLabelDisplay="on"
+                                min={-20}
+                                max={20}
                                 marks/>
+                        </div>
+                        <div className="sliderTitle">
+                            Pitch
                         </div>
                     </Col>
                 </Row>

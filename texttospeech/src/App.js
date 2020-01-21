@@ -5,7 +5,7 @@ import {Col, Container, Row} from 'react-bootstrap'
 import Header from './component/layout/Header'
 import TextInput from './component/pages/TextInput'
 import Progress from './component/pages/DownloadProgress'
-import {ttsRequest} from "./component/services/NetworkServices";
+import {ttsRequest, download } from "./component/services/NetworkServices";
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Button from "@material-ui/core/Button";
@@ -19,50 +19,53 @@ class App extends React.Component {
         input: "",
         speed: 1.0,
         pitch: 0.0
-    }
+    };
 
-    handleTextInputChange = (input, speed, pitch) => {
-        this.setState({input: input, speed: speed, pitch: pitch})
-    }
+    setInput = (input) => {
+        this.setState({input: input});
+    };
 
-    setFileName = (fileName) => {
-        this.setState({filename: fileName})
-    }
+    setSpeed = (speed) => {
+        this.setState({speed: speed});
+    };
 
+    setPitch = (pitch) => {
+        this.setState({pitch: pitch});
+    };
+
+    progressComplete = () => {
+        this.setState({downloadReady: true});
+    };
 
     onSubmit = () => {
         this.setState({submitted: true});
-
-        ttsRequest(this.state.input, this.state.speed, this.state.pitch, this.setFileName);
-
-    }
+        ttsRequest(this.state.input, this.state.speed, this.state.pitch, (data) => {
+            this.setState({filename: data});
+        });
+    };
 
     onDownload = () => {
-        var fileUrl = "http://thinkpad.kentailab.org:8082/SpringText/download/" + this.state.filename
-        window.location.href = fileUrl
-        this.setState({submitted: false, progressCompleted: false, filename: "", downloadReady: false})
-    }
+        download(this.state.filename, () => {
+            this.setState({submitted: false, progressCompleted: false, filename: "", downloadReady: false, input: "", speed: 1.0, pitch: 0.0});
+        });
+    };
 
     HomeScreen = () => {
         return (
             <Container>
-                <Row><TextInput onChange={this.handleTextInputChange}/></Row>
+                <Row><div><br/><br/><br/><br/></div></Row>
+                <Row><TextInput parentState={this.state} updateInput={this.setInput} updateSpeed={this.setSpeed} updatePitch={this.setPitch}/></Row>
                 <Row>
                     <div className="progressBar">{this.state.submitted ?
                         <Progress progressComplete={this.progressComplete}/> : null}</div>
                 </Row>
-                <br/>
                 <Row><Col className="text-center">{this.state.downloadReady ?
                     <Button variant="contained" color="primary" onClick={this.onDownload}>Download</Button> :
                     <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>}</Col>
                 </Row>
             </Container>
         );
-    }
-
-    progressComplete = () => {
-        this.setState({downloadReady: true})
-    }
+    };
 
     render() {
         return (

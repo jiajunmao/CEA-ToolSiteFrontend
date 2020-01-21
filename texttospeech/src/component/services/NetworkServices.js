@@ -23,3 +23,9 @@ export function ttsRequest(input, speed, pitch, callback) {
         }
     }
 }
+
+export function download(filename, callback) {
+    var fileUrl = "http://thinkpad.kentailab.org:8082/SpringText/download/" + filename;
+    window.location.href = fileUrl;
+    callback();
+}
