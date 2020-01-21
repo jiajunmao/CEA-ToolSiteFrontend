@@ -1,29 +1,29 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import MenuIcon from '@material-ui/icons/Menu'
-import { Toolbar, IconButton, Typography, Button } from '@material-ui/core'
+import {Button, IconButton, Toolbar, Typography} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
+        flexGrow: 1,
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+        marginRight: theme.spacing(2),
     },
     title: {
-      flexGrow: 1,
+        flexGrow: 1,
     },
 }));
 
-function Header () {
+function Header() {
     const classes = useStyles()
 
     return (
         <AppBar>
             <Toolbar>
-                <IconButton edge="start" className={classes.menuButton}color="inherit" aria-label="menu">
-                    <MenuIcon />
+                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <MenuIcon/>
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
                     Text To Speech
