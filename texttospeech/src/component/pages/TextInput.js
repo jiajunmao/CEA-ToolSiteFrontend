@@ -1,5 +1,11 @@
 import React, {Component} from 'react'
+<<<<<<< HEAD
 import {Slider, TextField} from "@material-ui/core";
+=======
+import Slider from '@material-ui/core/Slider'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
+>>>>>>> 31bbd7023fd57a9dcd1ac263d9b6426e28ab59d2
 import {Col, Container, Row} from 'react-bootstrap'
 import './TextInput.css'
 
@@ -10,6 +16,7 @@ class TextInput extends Component {
         pitch: 0.0
     };
 
+<<<<<<< HEAD
     onChange = () => {
         this.props.onChange(this.state.input, this.state.speed, this.state.pitch);
     }
@@ -30,6 +37,28 @@ class TextInput extends Component {
         this.setState({pitch: value}, () => {
             this.onChange();
         });
+=======
+<<<<<<< HEAD
+    onChange = () => {
+        this.props.onChange(this.state.input, this.state.speed, this.state.pitch);
+    }
+=======
+>>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
+
+    handleTextArea = (e) => {
+        this.setState({input: e.target.value});
+        this.onChange();
+    };
+
+    handleSpeedSlider = (event, value) => {
+        this.setState({speed: value})
+        this.onChange();
+    };
+
+    handlePitchSlider = (event, value) => {
+        this.setState({pitch: value});
+        this.onChange();
+>>>>>>> 31bbd7023fd57a9dcd1ac263d9b6426e28ab59d2
     }
 
     render() {
@@ -39,6 +68,7 @@ class TextInput extends Component {
                 <link rel="stylesheet"
                       href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css"/>
                 <Row className="form">
+<<<<<<< HEAD
                     <TextField
                         id="outlined-multiline-static"
                         label="Text Input"
@@ -51,6 +81,12 @@ class TextInput extends Component {
                         fullWidth={true}
                         variant="outlined"
                     />
+=======
+                    <textarea className="inputTextArea"
+                              value={this.state.input}
+                              onChange={this.handleTextArea}
+                              placeholder="Your text..."/>
+>>>>>>> 31bbd7023fd57a9dcd1ac263d9b6426e28ab59d2
                 </Row>
 
                 <Row>
@@ -76,6 +112,12 @@ class TextInput extends Component {
 
                     <Col md={6}>
                         <div style={{"display": "flex"}}>
+<<<<<<< HEAD
+=======
+
+                            <RemoveCircleIcon/>
+
+>>>>>>> 31bbd7023fd57a9dcd1ac263d9b6426e28ab59d2
                             <Slider
                                 defaultValue={1}
                                 value={this.state.speed}
