@@ -1,35 +1,35 @@
 import React, {Component} from 'react'
-import Slider from '@material-ui/core/Slider'
-import Button from '@material-ui/core/Button'
-import AddCircleIcon from '@material-ui/icons/AddCircle'
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
+import {Slider, TextField} from "@material-ui/core";
 import {Col, Container, Row} from 'react-bootstrap'
 import './TextInput.css'
 
 class TextInput extends Component {
     state = {
-        input: '',
+        input: "",
         speed: 1.0,
         pitch: 0.0
     };
 
+    onChange = () => {
+        this.props.onChange(this.state.input, this.state.speed, this.state.pitch);
+    }
 
-    onChange = (e) => {
-        this.setState({input: e.target.value});
-    };
-
-    onSubmit = (e) => {
-        e.preventDefault()
-        this.props.onSubmit(this.state.input, this.state.speed, this.state.pitch);
-        this.setState({input: '', speech: 1.0, pitch: 0.0});
+    handleTextArea = (e) => {
+        this.setState({input: e.target.value}, () => {
+            this.onChange();
+        });
     };
 
     handleSpeedSlider = (event, value) => {
-        this.setState({speed: value})
+        this.setState({speed: value}, () => {
+            this.onChange();
+        })
     };
 
     handlePitchSlider = (event, value) => {
-        this.setState({pitch: value})
+        this.setState({pitch: value}, () => {
+            this.onChange();
+        });
     }
 
     render() {
@@ -39,10 +39,18 @@ class TextInput extends Component {
                 <link rel="stylesheet"
                       href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css"/>
                 <Row className="form">
-                    <textarea className="inputTextArea"
-                              value={this.state.input}
-                              onChange={this.onChange}
-                              placeholder="Your text..."/>
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Text Input"
+                        multiline
+                        rows="10"
+                        rowsMax="10"
+                        onChange={this.handleTextArea}
+                        placeholder="Your text here..."
+                        autoFocus={true}
+                        fullWidth={true}
+                        variant="outlined"
+                    />
                 </Row>
 
                 <Row>
@@ -54,9 +62,6 @@ class TextInput extends Component {
 
                     <Col md={6}>
                         <div className="d-flex">
-
-                            <RemoveCircleIcon/>
-
                             <Slider
                                 defaultValue={0}
                                 value={this.state.pitch}
@@ -68,20 +73,9 @@ class TextInput extends Component {
                                 marks/>
                         </div>
                     </Col>
-                </Row>
-                
-                <br></br>
-                <br></br>
-
-                            <AddCircleIcon/>
-                        </div>
-                    </Col>
 
                     <Col md={6}>
-                        <div style={{"display" : "flex"}}>
-
-                            <RemoveCircleIcon/>
-
+                        <div style={{"display": "flex"}}>
                             <Slider
                                 defaultValue={1}
                                 value={this.state.speed}
@@ -91,15 +85,7 @@ class TextInput extends Component {
                                 min={0.25}
                                 max={4.0}
                                 marks/>
-
-                            <AddCircleIcon/>
                         </div>
-                    </Col>
-                </Row>
-
-                <Row className="text-center">
-                    <Col>
-                        <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
                     </Col>
                 </Row>
             </Container>

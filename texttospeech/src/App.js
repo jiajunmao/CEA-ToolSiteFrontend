@@ -1,84 +1,81 @@
 import React from 'react';
 import './App.css';
-import {Container, Row} from 'react-bootstrap'
+import {Col, Container, Row} from 'react-bootstrap'
 
 import Header from './component/layout/Header'
 import TextInput from './component/pages/TextInput'
 import Progress from './component/pages/DownloadProgress'
-import DownloadButton from './component/pages/DownloadButton'
-
+import {ttsRequest} from "./component/services/NetworkServices";
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-
+import Button from "@material-ui/core/Button";
 
 class App extends React.Component {
-  state = {
-    submitted: false,
-    filename: '',
-    downloadCompleted: false
-  }
+    state = {
+        submitted: false,
+        filename: '',
+        downloadReady: false,
 
-  onSubmit = (input, speed, pitch) => {
-    this.setState({submitted: true})
-    
-    var request = new XMLHttpRequest()
-    request.open('POST', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request', true)
-    //request.open('POST', 'http://localhost:8081/tts/request', true)
-    request.setRequestHeader('Access-Control-Allow-Origin', '*')
-    request.setRequestHeader('Content-Type', 'application/json')
-
-    var requestBody = '{'
-      + '"email" : "text@test.com",'
-      + '"requestText" : "' + input + '",'
-      + '"speakingSpeed" : ' + speed + ','
-      + '"pitch" : ' + pitch
-      + '}'
-
-    console.log(requestBody)
-    request.send(requestBody)
-
-    request.onreadystatechange = (e) => {
-
-      if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-        var data = JSON.parse(request.responseText)
-        this.setState({filename: data.filename})
-      }
+        input: "",
+        speed: 1.0,
+        pitch: 0.0
     }
-  }
 
-  HomeScreen = () => {
-    return (
-        <Container>
-          <Row><TextInput onSubmit={this.onSubmit}/></Row>
-          <Row>{this.state.submitted ? <Progress downloadComplete={this.downloadComplete}/> : null}</Row>
-          <Row>{this.state.downloadCompleted ? <DownloadButton downloadInitiated={this.downloadInitiated} filename={this.state.filename}/> : null}</Row>
-        </Container>
-    );
-  }
+    handleTextInputChange = (input, speed, pitch) => {
+        this.setState({input: input, speed: speed, pitch: pitch})
+    }
 
-  downloadComplete = () => {
-    this.setState({downloadCompleted: true})
-  }
+    setFileName = (fileName) => {
+        this.setState({filename: fileName})
+    }
 
-  downloadInitiated = () => {
-    this.setState({submitted: false, downloadCompleted: false, filename: ""})
-  }
+    onSubmit = () => {
+        this.setState({submitted: true});
 
-  render() {
-    return (
-      <div className="App">
-        <Header/>
-        <br/>
-        <br/>
-        <br/>
+        ttsRequest(this.state.input, this.state.speed, this.state.pitch, this.setFileName);
+    }
 
-        <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
-          <Switch>
-            <Route path="/" component={this.HomeScreen}/>
-          </Switch>
-        </BrowserRouter>
-      </div>
-    );
-  }
+    onDownload = () => {
+        var fileUrl = "http://thinkpad.kentailab.org:8082/SpringText/download/" + this.state.filename
+        window.location.href = fileUrl
+        this.setState({submitted: false, progressCompleted: false, filename: "", downloadReady: false})
+    }
+
+    HomeScreen = () => {
+        return (
+            <Container>
+                <Row>
+                    <div><br/><br/><br/><br/></div>
+                </Row>
+                <Row><TextInput onChange={this.handleTextInputChange}/></Row>
+                <Row>
+                    <div className="progressBar">{this.state.submitted ?
+                        <Progress progressComplete={this.progressComplete}/> : null}</div>
+                </Row>
+                <br/>
+                <Row><Col className="text-center">{this.state.downloadReady ?
+                    <Button variant="contained" color="primary" onClick={this.onDownload}>Download</Button> :
+                    <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>}</Col>
+                </Row>
+            </Container>
+        );
+    }
+
+    progressComplete = () => {
+        this.setState({downloadReady: true})
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Header/>
+                <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
+                    <Switch>
+                        <Route path="/" component={this.HomeScreen}/>
+                    </Switch>
+                </BrowserRouter>
+            </div>
+        );
+    }
 }
 
 export default App;
