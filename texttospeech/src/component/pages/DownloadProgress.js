@@ -1,10 +1,9 @@
 import React from 'react'
 import {Container} from "react-bootstrap";
-import {makeStyles} from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress'
 import './DownloadProgress.css'
 
-class LinearDeterminate extends React.Component{
+class LinearDeterminate extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -15,7 +14,7 @@ class LinearDeterminate extends React.Component{
     }
 
     step = () => {
-        const { completed } = this.state;
+        const {completed} = this.state;
         var newCompleted = completed + 1;
         if (completed > 100) {
             this.setState({completed: 100})

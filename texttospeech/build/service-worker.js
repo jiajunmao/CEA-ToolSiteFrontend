@@ -14,12 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-<<<<<<< HEAD
-  "http://localhost:7001/tts/precache-manifest.fef50b3a420c427b046517de71cc88a8.js"
-=======
-  "/precache-manifest.3b81f713b91aa6d8a434b80ee09cc8ef.js"
-
->>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
+  "http://localhost:7001/tts/precache-manifest.0372d98589c9603efdcce11226e9e032.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -38,11 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-<<<<<<< HEAD
 workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("http://localhost:7001/tts/index.html"), {
-=======
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"), {
->>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
   
   blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 });

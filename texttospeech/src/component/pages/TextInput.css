@@ -10,12 +10,14 @@
 
 
 .form {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     margin-top: 5px;
 }
 
 .sliderTitle {
-    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     align-content: center;
 }
 

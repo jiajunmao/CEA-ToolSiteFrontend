@@ -138,11 +138,7 @@
                                 <PUBLIC_URL>http://thinkpad.kentailab.org:8082/ttsTest</PUBLIC_URL>
                                 <REACT_APP_ROUTER_BASE>/ttsTest</REACT_APP_ROUTER_BASE>
                             </environmentVariables>
-<<<<<<< HEAD
                         </configuration>
-=======
-                        </configuration>r
->>>>>>> e9964d178fad1f29ad6b4822de71ccdad9cf977e
                     </plugin>
                 </plugins>
             </build>
