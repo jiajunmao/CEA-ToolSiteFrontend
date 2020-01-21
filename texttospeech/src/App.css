@@ -1,3 +1,9 @@
 .textInput {
   margin-top: 50px;
+  padding-top: 50px;
+}
+
+.progressBar {
+  width: 60%;
+  max-width: 60%;
 }

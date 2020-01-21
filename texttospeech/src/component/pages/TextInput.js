@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Slider from '@material-ui/core/Slider'
-import Button from '@material-ui/core/Button'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 import {Col, Container, Row} from 'react-bootstrap'
@@ -13,26 +12,23 @@ class TextInput extends Component {
         pitch: 0.0
     };
 
-    constructor(props) {
-        super(props)
+    onChange = () => {
+        this.props.onChange(this.state.input, this.state.speed, this.state.pitch);
     }
 
-    onChange = (e) => {
+    handleTextArea = (e) => {
         this.setState({input: e.target.value});
-    };
-
-    onSubmit = (e) => {
-        e.preventDefault()
-        this.props.onSubmit(this.state.input, this.state.speed, this.state.pitch);
-        this.setState({input: '', speech: 1.0, pitch: 0.0});
+        this.onChange();
     };
 
     handleSpeedSlider = (event, value) => {
         this.setState({speed: value})
+        this.onChange();
     };
 
     handlePitchSlider = (event, value) => {
-        this.setState({pitch: value})
+        this.setState({pitch: value});
+        this.onChange();
     }
 
     render() {
@@ -44,7 +40,7 @@ class TextInput extends Component {
                 <Row className="form">
                     <textarea className="inputTextArea"
                               value={this.state.input}
-                              onChange={this.onChange}
+                              onChange={this.handleTextArea}
                               placeholder="Your text..."/>
                 </Row>
 
@@ -75,7 +71,7 @@ class TextInput extends Component {
                     </Col>
 
                     <Col md={6}>
-                        <div style={{"display" : "flex"}}>
+                        <div style={{"display": "flex"}}>
 
                             <RemoveCircleIcon/>
 
@@ -91,12 +87,6 @@ class TextInput extends Component {
 
                             <AddCircleIcon/>
                         </div>
-                    </Col>
-                </Row>
-
-                <Row className="text-center">
-                    <Col>
-                        <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
                     </Col>
                 </Row>
             </Container>

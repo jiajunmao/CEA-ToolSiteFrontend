@@ -1,41 +1,44 @@
-import React, { Component } from 'react'
-import { Line } from 'rc-progress'
+import React from 'react'
+import {Container} from "react-bootstrap";
+import {makeStyles} from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress'
 import './DownloadProgress.css'
 
-class DownloadProgress extends Component {
+class LinearDeterminate extends React.Component{
     constructor() {
         super()
         this.state = {
-            downloadCompleted: false,
-            progress: 0
+            completed: 0
         }
-        
+
         this.step = this.step.bind(this)
     }
-    
 
     step = () => {
-        const { progress } = this.state;
-        var newPercent = progress + 1
-        if(progress > 100) {
-            clearTimeout(this.tm)
-            this.props.downloadComplete()
-            return
+        const { completed } = this.state;
+        var newCompleted = completed + 1;
+        if (completed > 100) {
+            this.setState({completed: 100})
+            clearTimeout(this.tm);
+            this.props.progressComplete();
+            return;
         }
-        this.setState({progress: newPercent})
-        this.tm = setTimeout(this.step, 20)
+
+        this.setState({completed: newCompleted});
+        this.tm = setTimeout(this.step, 20);
     }
 
     componentDidMount() {
         this.step()
     }
 
-    render (){
-        const { progress } = this.state
+    render() {
         return (
-            <Line className="progressBar" percent={progress} strokeWidth="1"/>
+            <Container>
+                <LinearProgress variant="determinate" value={this.state.completed}/>
+            </Container>
         )
     }
 }
 
-export default DownloadProgress
+export default LinearDeterminate
