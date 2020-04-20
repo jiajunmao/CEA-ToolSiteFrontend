@@ -2,7 +2,7 @@ export function ttsRequest(input, speed, pitch, callback) {
 
     var request = new XMLHttpRequest();
     var data = "";
-    request.open('POST', 'http://thinkpad.kentailab.org:8082/SpringText/tts/request', true);
+    request.open('POST', 'http://thinkpad.kentailab.org:8081/tts/request', true);
     request.setRequestHeader('Access-Control-Allow-Origin', '*');
     request.setRequestHeader('Content-Type', 'application/json');
 
@@ -25,7 +25,7 @@ export function ttsRequest(input, speed, pitch, callback) {
 }
 
 export function download(filename, callback) {
-    var fileUrl = "http://thinkpad.kentailab.org:8082/SpringText/download/" + filename;
+    var fileUrl = "http://thinkpad.kentailab.org:8081/download/" + filename;
     window.location.href = fileUrl;
     callback();
 }
