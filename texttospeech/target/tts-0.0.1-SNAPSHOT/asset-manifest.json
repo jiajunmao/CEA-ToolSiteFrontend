@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "http://localhost:7001/tts/static/css/main.41d43284.chunk.css",
-    "main.js": "http://localhost:7001/tts/static/js/main.71aba7b0.chunk.js",
-    "main.js.map": "http://localhost:7001/tts/static/js/main.71aba7b0.chunk.js.map",
-    "runtime-main.js": "http://localhost:7001/tts/static/js/runtime-main.b6def43c.js",
-    "runtime-main.js.map": "http://localhost:7001/tts/static/js/runtime-main.b6def43c.js.map",
-    "static/js/2.73403cdf.chunk.js": "http://localhost:7001/tts/static/js/2.73403cdf.chunk.js",
-    "static/js/2.73403cdf.chunk.js.map": "http://localhost:7001/tts/static/js/2.73403cdf.chunk.js.map",
-    "index.html": "http://localhost:7001/tts/index.html",
-    "precache-manifest.0372d98589c9603efdcce11226e9e032.js": "http://localhost:7001/tts/precache-manifest.0372d98589c9603efdcce11226e9e032.js",
-    "service-worker.js": "http://localhost:7001/tts/service-worker.js",
-    "static/css/main.41d43284.chunk.css.map": "http://localhost:7001/tts/static/css/main.41d43284.chunk.css.map",
-    "static/js/2.73403cdf.chunk.js.LICENSE": "http://localhost:7001/tts/static/js/2.73403cdf.chunk.js.LICENSE"
+    "main.css": "http://thinkpad.kentailab.org:8082/tts/static/css/main.41d43284.chunk.css",
+    "main.js": "http://thinkpad.kentailab.org:8082/tts/static/js/main.b5bc81f5.chunk.js",
+    "main.js.map": "http://thinkpad.kentailab.org:8082/tts/static/js/main.b5bc81f5.chunk.js.map",
+    "runtime-main.js": "http://thinkpad.kentailab.org:8082/tts/static/js/runtime-main.1e92f07b.js",
+    "runtime-main.js.map": "http://thinkpad.kentailab.org:8082/tts/static/js/runtime-main.1e92f07b.js.map",
+    "static/js/2.38e134e4.chunk.js": "http://thinkpad.kentailab.org:8082/tts/static/js/2.38e134e4.chunk.js",
+    "static/js/2.38e134e4.chunk.js.map": "http://thinkpad.kentailab.org:8082/tts/static/js/2.38e134e4.chunk.js.map",
+    "index.html": "http://thinkpad.kentailab.org:8082/tts/index.html",
+    "precache-manifest.9979d4533ae04e1edb2130526a06a2e3.js": "http://thinkpad.kentailab.org:8082/tts/precache-manifest.9979d4533ae04e1edb2130526a06a2e3.js",
+    "service-worker.js": "http://thinkpad.kentailab.org:8082/tts/service-worker.js",
+    "static/css/main.41d43284.chunk.css.map": "http://thinkpad.kentailab.org:8082/tts/static/css/main.41d43284.chunk.css.map",
+    "static/js/2.38e134e4.chunk.js.LICENSE": "http://thinkpad.kentailab.org:8082/tts/static/js/2.38e134e4.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.b6def43c.js",
-    "static/js/2.73403cdf.chunk.js",
+    "static/js/runtime-main.1e92f07b.js",
+    "static/js/2.38e134e4.chunk.js",
     "static/css/main.41d43284.chunk.css",
-    "static/js/main.71aba7b0.chunk.js"
+    "static/js/main.b5bc81f5.chunk.js"
   ]
 }

@@ -135,7 +135,7 @@
 
                         <configuration>
                             <environmentVariables>
-                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/ttsTest</PUBLIC_URL>
+                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/tts-dev</PUBLIC_URL>
                                 <REACT_APP_ROUTER_BASE>/ttsTest</REACT_APP_ROUTER_BASE>
                             </environmentVariables>
                         </configuration>
@@ -154,8 +154,8 @@
 
                         <configuration>
                             <environmentVariables>
-                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/${project.artifactId}</PUBLIC_URL>
-                                <REACT_APP_ROUTER_BASE>/${project.artifactId}</REACT_APP_ROUTER_BASE>
+                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/tts</PUBLIC_URL>
+                                <REACT_APP_ROUTER_BASE>/tts</REACT_APP_ROUTER_BASE>
                             </environmentVariables>
                         </configuration>
                     </plugin>

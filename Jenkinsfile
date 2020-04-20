@@ -7,6 +7,7 @@ pipeline {
             steps {
                 script {
                     echo 'Packaing WAR with Maven'
+                    sh 'l'
                     sh 'cd texttospeech'
                     sh 'mvn package -Pprod'
                 }
