@@ -5,10 +5,8 @@ pipeline {
     stages {
         stage('TTS Maven Build') {
             steps {
-                script {
+                dir ('texttospeech'){
                     echo 'Packaing WAR with Maven'
-                    sh 'cd texttospeech'
-                    sh 'ls'
                     sh 'mvn package -Pprod'
                 }
             }
