@@ -5,10 +5,20 @@ pipeline {
     stages {
         stage('TTS Maven Build') {
             steps {
-                dir ('texttospeech'){
-                    echo 'Packaing WAR with Maven'
-                    sh 'mvn package -Pprod'
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'Master branch detected, using <prod> profile to package maven'
+                        dir ('texttospeech') {
+                            sh 'mvn package -Pprod'
+                        }
+                    } else if (env.BRANCH_NAME == 'development') {
+                        echo 'Development branch detected, using <dev> profile to package maven'
+                        dir ('texttospeech') {
+                            sh 'mvn package -Pdev'
+                        }
+                    }
                 }
+                
             }
         }
 
