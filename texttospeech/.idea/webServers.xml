@@ -2,12 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="b87de389-945e-4056-aef2-fe4b5bf636fd" name="Thinkpad-JS" url="http://thinkpad.kentailab.org">
-        <fileTransfer host="thinkpad.kentailab.org" port="2223" rootFolder="/home/aaronmao/WebStorm/CEA-ToolSiteFrontend" accessType="SFTP">
+      <webServer id="dda3e44d-2413-4010-ac5d-071b4194dbe1" name="React-Dev">
+        <fileTransfer rootFolder="/home/aaronmao/CEA-ToolSiteFrontend" accessType="SFTP" host="thinkpad.kentailab.org" port="2223" sshConfigId="01cb37fb-0923-4655-b826-f41a06400be6" sshConfig="Thinkpad-JS">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="2223" />
         </fileTransfer>
       </webServer>
     </option>
