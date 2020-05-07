@@ -2,28 +2,34 @@ import {Col, Container, Row} from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
+import './LoginPage.css'
 
 class LoginPage extends React.Component {
 
     render() {
         return (
             <Container>
-                <Row>
+                <Row className='flex-field'>
                     <TextField
                         id="Email-Input"
                         label="Email"
                     />
-                    <TextField
-                        id="Password-Input"
-                        label="Password"
-                        type="password"
-                        autoComplete="current-password"/>
                 </Row>
 
-                <Row>
-                    <Button variant="container" color="primary">Login</Button>
+                <Row className='flex-field'>
+                        <TextField
+                            id="Password-Input"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"/>
+                </Row>
+
+                <Row className='login-button'>
+                    <Button color="primary">Login</Button>
                 </Row>
             </Container>
         )
     }
 }
+
+export default LoginPage

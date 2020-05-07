@@ -6,7 +6,8 @@ import ttsPage from "./pages/TtsPage";
 import LoginPage from './pages/LoginPage';
 import {ttsRequest, download } from "./services/NetworkServices";
 
-import {Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import TtsPage from "./pages/TtsPage";
 
 class App extends React.Component {
     state = {
@@ -48,19 +49,24 @@ class App extends React.Component {
         });
     };
 
+    HomeScreen = () => <TtsPage
+        onDownload={this.onDownload}
+        onSubmit={this.onSubmit}
+        progressComplete={this.progressComplete}
+        parentStates={this.state}/>
+
+    LoginScreen = () => <LoginPage/>
+
     render() {
         return (
             <div className="App">
                 <Header/>
+                <Router>
                     <Switch>
-                        <Route path="/" component={<ttsPage
-                            onDownload={this.onDownload}
-                            onSubmit={this.onSubmit}
-                            progressComplete={this.progressComplete}
-                            parentStates={this.state}/>}/>
-
-                        <Route path="login" component={LoginPage}/>
+                        <Route path="/" exact component={this.HomeScreen}/>
+                        <Route path="/login" exact component={this.LoginScreen}/>
                     </Switch>
+                </Router>
             </div>
         );
     }

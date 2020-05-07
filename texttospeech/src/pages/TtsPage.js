@@ -26,4 +26,4 @@ class TtsPage extends React.Component {
     };
 }
 
-export default ttsPage
+export default TtsPage
