@@ -34,6 +34,12 @@
             </plugin>
 
             <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>LATEST_VERSION</version>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.3.2</version>
@@ -135,7 +141,7 @@
 
                         <configuration>
                             <environmentVariables>
-                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/ttsTest</PUBLIC_URL>
+                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/tts-dev</PUBLIC_URL>
                                 <REACT_APP_ROUTER_BASE>/ttsTest</REACT_APP_ROUTER_BASE>
                             </environmentVariables>
                         </configuration>
@@ -154,8 +160,8 @@
 
                         <configuration>
                             <environmentVariables>
-                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/${project.artifactId}</PUBLIC_URL>
-                                <REACT_APP_ROUTER_BASE>/${project.artifactId}</REACT_APP_ROUTER_BASE>
+                                <PUBLIC_URL>http://thinkpad.kentailab.org:8082/tts</PUBLIC_URL>
+                                <REACT_APP_ROUTER_BASE>/tts</REACT_APP_ROUTER_BASE>
                             </environmentVariables>
                         </configuration>
                     </plugin>

@@ -1,0 +1,82 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'publish' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/aaronmao/CEA-ToolSiteFrontend/texttospeech',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/aaronmao/.npm/texttospeech/0.1.0/package.tgz not in flight; packing
+9 info lifecycle texttospeech@0.1.0~prepublish: texttospeech@0.1.0
+10 silly lifecycle texttospeech@0.1.0~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/home/aaronmao/.npm/texttospeech/0.1.0/package.tgz',
+11 verbose tar pack   '/home/aaronmao/CEA-ToolSiteFrontend/texttospeech' ]
+12 verbose tarball /home/aaronmao/.npm/texttospeech/0.1.0/package.tgz
+13 verbose folder /home/aaronmao/CEA-ToolSiteFrontend/texttospeech
+14 verbose addLocalTarball adding from inside cache /home/aaronmao/.npm/texttospeech/0.1.0/package.tgz
+15 silly cache afterAdd texttospeech@0.1.0
+16 verbose afterAdd /home/aaronmao/.npm/texttospeech/0.1.0/package/package.json not in flight; writing
+17 verbose afterAdd /home/aaronmao/.npm/texttospeech/0.1.0/package/package.json written
+18 silly publish { name: 'texttospeech',
+18 silly publish   version: '0.1.0',
+18 silly publish   private: true,
+18 silly publish   dependencies:
+18 silly publish    { '@material-ui/core': '^4.8.3',
+18 silly publish      '@material-ui/icons': '^4.5.1',
+18 silly publish      '@material-ui/system': '^4.7.1',
+18 silly publish      '@testing-library/jest-dom': '^4.2.4',
+18 silly publish      '@testing-library/react': '^9.4.0',
+18 silly publish      '@testing-library/user-event': '^7.1.2',
+18 silly publish      bootstrap: '^4.4.1',
+18 silly publish      'rc-progress': '^2.5.2',
+18 silly publish      react: '^16.12.0',
+18 silly publish      'react-bootstrap': '^1.0.0-beta.16',
+18 silly publish      'react-dom': '^16.12.0',
+18 silly publish      'react-router-dom': '^5.1.2',
+18 silly publish      'react-scripts': '3.3.0' },
+18 silly publish   scripts:
+18 silly publish    { start: 'react-scripts start',
+18 silly publish      build: 'react-scripts build',
+18 silly publish      test: 'react-scripts test',
+18 silly publish      eject: 'react-scripts eject' },
+18 silly publish   eslintConfig: { extends: 'react-app' },
+18 silly publish   browserslist:
+18 silly publish    { production: [ '>0.2%', 'not dead', 'not op_mini all' ],
+18 silly publish      development:
+18 silly publish       [ 'last 1 chrome version',
+18 silly publish         'last 1 firefox version',
+18 silly publish         'last 1 safari version' ] },
+18 silly publish   publishConfig: { registry: 'https://npm.pkg.github.com/' },
+18 silly publish   readme: 'ERROR: No README data found!',
+18 silly publish   _id: 'texttospeech@0.1.0',
+18 silly publish   _shasum: '2afacd6f0d4eacb0c5e14ec309e0108f1dbfdfb9',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig { registry: 'https://npm.pkg.github.com/' }
+20 verbose stack Error: This package has been marked as private
+20 verbose stack Remove the 'private' field from the package.json to publish it.
+20 verbose stack     at publish_ (/usr/share/npm/lib/publish.js:100:15)
+20 verbose stack     at Array.<anonymous> (/usr/share/npm/node_modules/slide/lib/bind-actor.js:15:8)
+20 verbose stack     at LOOP (/usr/share/npm/node_modules/slide/lib/chain.js:15:14)
+20 verbose stack     at LOOP (/usr/share/npm/node_modules/slide/lib/chain.js:14:28)
+20 verbose stack     at chain (/usr/share/npm/node_modules/slide/lib/chain.js:20:5)
+20 verbose stack     at /usr/share/npm/lib/publish.js:72:5
+20 verbose stack     at RES (/usr/share/npm/node_modules/inflight/inflight.js:23:14)
+20 verbose stack     at f (/usr/share/npm/node_modules/once/once.js:17:25)
+20 verbose stack     at /usr/share/npm/lib/cache.js:361:16
+20 verbose stack     at /usr/share/npm/node_modules/write-file-atomic/index.js:29:9
+21 verbose cwd /home/aaronmao/CEA-ToolSiteFrontend/texttospeech
+22 error Linux 4.15.0-96-generic
+23 error argv "/usr/bin/node" "/usr/bin/npm" "publish"
+24 error node v8.10.0
+25 error npm  v3.5.2
+26 error This package has been marked as private
+26 error Remove the 'private' field from the package.json to publish it.
+27 error If you need help, you may report this error at:
+27 error     <https://github.com/npm/npm/issues>
+28 verbose exit [ 1, true ]

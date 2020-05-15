@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import {Col, Container, Row} from 'react-bootstrap'
-import Header from './component/layout/Header'
-import TextInput from './component/pages/TextInput'
-import Progress from './component/pages/DownloadProgress'
-import {ttsRequest, download } from "./component/services/NetworkServices";
+import Header from './layout/Header';
+import ttsPage from "./pages/TtsPage";
+import LoginPage from './pages/LoginPage';
+import {ttsRequest, download } from "./services/NetworkServices";
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Button from "@material-ui/core/Button";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import TtsPage from "./pages/TtsPage";
 
 class App extends React.Component {
     state = {
@@ -50,32 +49,24 @@ class App extends React.Component {
         });
     };
 
-    HomeScreen = () => {
-        return (
-            <Container>
-                <Row><div><br/><br/><br/><br/></div></Row>
-                <Row><TextInput parentState={this.state} updateInput={this.setInput} updateSpeed={this.setSpeed} updatePitch={this.setPitch}/></Row>
-                <Row>
-                    <div className="progressBar">{this.state.submitted ?
-                        <Progress progressComplete={this.progressComplete}/> : null}</div>
-                </Row>
-                <Row><Col className="text-center">{this.state.downloadReady ?
-                    <Button variant="contained" color="primary" onClick={this.onDownload}>Download</Button> :
-                    <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>}</Col>
-                </Row>
-            </Container>
-        );
-    };
+    HomeScreen = () => <TtsPage
+        onDownload={this.onDownload}
+        onSubmit={this.onSubmit}
+        progressComplete={this.progressComplete}
+        parentStates={this.state}/>
+
+    LoginScreen = () => <LoginPage/>
 
     render() {
         return (
             <div className="App">
                 <Header/>
-                <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
+                <Router>
                     <Switch>
-                        <Route path="/" component={this.HomeScreen}/>
+                        <Route path="/" exact component={this.HomeScreen}/>
+                        <Route path="/login" exact component={this.LoginScreen}/>
                     </Switch>
-                </BrowserRouter>
+                </Router>
             </div>
         );
     }
